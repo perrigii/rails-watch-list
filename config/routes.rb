@@ -5,5 +5,5 @@ Rails.application.routes.draw do
   end
   resources :bookmarks, only: :destroy
   # Defines the root path route ("/")
-  root "listsx#index"
+  root "lists#index"
 end
