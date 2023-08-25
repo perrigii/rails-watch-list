@@ -1,0 +1,25 @@
+<div class="container">
+  <div class="row">
+    <div class="col-xs-12 col-sm-10 col-sm-offset-1">
+      <h1><%= @list.name %></h1>
+
+      <div>
+        <% @list.bookmarks.each do |bookmark| %>
+          <% movie = Movie.find(bookmark.movie_id) %>
+          <div class="container">
+            <p>
+              <strong>Title: </strong><%= movie.title %>
+            </p>
+            <p>
+              <strong>Comment: </strong><%= movie.comment %>
+            </p>
+          </div>
+          <%= link_to 'Delete', bookmark_path(bookmark), data: {turbo_method: :delete, turbo_confirm: "Are you sure?"} %>
+        <% end %>
+      </div>
+
+      <%= link_to 'back', lists_path, class="btn btn-sm btn-primary" %>
+      <%= link_to 'Add Bookmark', new_list_bookmark_path(@list), class="btn btn-sm btn-warning" %>
+    </div>
+  </div>
+</div>
